@@ -1,0 +1,10 @@
+cs61b-sm
+22916331
+Kevin Jia
+
+some other class can import the list package, and create a DList, and then do
+DList test = new DList() blah blah blah...
+
+And then test.head = null
+
+Or that can do test.size = 0, even when there are nodes inside
