@@ -59,6 +59,12 @@ public class DList extends List {
   public DList() {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+      head = newNode(null, null, null, null);
+      head.prev = head;
+      head.next = head;
+      size = 0;
+      
+      
   }
 
   /**
@@ -71,6 +77,12 @@ public class DList extends List {
   public void insertFront(Object item) {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+    
+        DListNode temp = newNode(item, this, head, head.next);
+        head.next = temp;
+        head.next.next.prev = temp;
+    
+    size++;
   }
 
   /**
@@ -83,6 +95,12 @@ public class DList extends List {
   public void insertBack(Object item) {
     // Your solution here.  Similar to Homework 4, but now you need to specify
     //   the `list' field (second parameter) as well.
+      
+      DListNode temp = newNode(item, this, head.prev, head);
+     
+      head.prev = temp;
+      temp.prev.next = temp;
+      size++;
   }
 
   /**
@@ -127,7 +145,9 @@ public class DList extends List {
   public String toString() {
     String result = "[  ";
     DListNode current = head.next;
+      
     while (current != head) {
+      
       result = result + current.item + "  ";
       current = current.next;
     }
@@ -249,5 +269,12 @@ public class DList extends List {
                           );
       System.err.println ("Aborting the testing code.");
     }
+    DList test = new DList();
+    test.insertBack(new Integer(4));
+    test.insertBack(new Integer(5));
+    test.insertFront(new Integer(3));
+    test.insertFront(new Integer(2));
+      System.out.println(test);
+    
   }
 }
